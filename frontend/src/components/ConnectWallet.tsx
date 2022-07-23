@@ -1,3 +1,4 @@
+import { Button } from '@chakra-ui/react';
 import { useState } from 'react'
 import { session } from '../privy';
 
@@ -24,7 +25,7 @@ const ConnectWallet = () => {
   }
 
   return (
-    <button onClick={connectToWallet}>Connect Wallet</button>
+    <Button colorScheme='teal' onClick={connectToWallet}>Connect Wallet</Button>
   )
 }
 

@@ -7,5 +7,7 @@ declare global {
   }
 }
 
-export const session = new SiweSession(import.meta.env.VITE_PRIVY_API_KEY, window.ethereum)
+const { VITE_PRIVY_API_KEY } = import.meta.env
+
+export const session = new SiweSession(VITE_PRIVY_API_KEY, window.ethereum)
 export const client = new PrivyClient({session: session})

@@ -1,8 +1,15 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import FormEditPage from '../pages/FormEditPage'
+import ProfilePage from '../pages/Profile'
+
 const App = () => {
   return (
-    <>
-    <h1>privy</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/form/edit' element={<FormEditPage />} />
+        <Route path='/:id' element={<ProfilePage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
