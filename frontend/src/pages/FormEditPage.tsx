@@ -1,15 +1,41 @@
 import { Box, Button, Flex, FormControl, FormLabel, Input, Stack, Text } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { client } from '../privy'
+import { client, session } from '../privy'
 import Schema from '../entity/Schema'
+import { WalletContext } from '../context/WalletContext'
+import { useNavigate } from 'react-router-dom'
 
 const FormEditPage = () => {
   const { handleSubmit, register, formState: { errors, isSubmitting } } = useForm<Schema>()
   const [schema, setSchema] = useState<Schema>()
+  const navigate = useNavigate()
+  const [address, setAddress] = useState('');
+
+  const connectToWallet = async () => {
+    try {
+      const { ethereum } = window
+
+      if (!ethereum) {
+        alert('Please install MetaMask for this demo: https://metamask.io/')
+        return
+      }
+
+      if (!(await session.isAuthenticated())) {
+        await session.authenticate()
+      }
+      const address = await session.address()
+      setAddress(address ?? '')
+      console.log(`setAddress(${address})`)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   async function onSubmit(value: Schema) {
-    const [params] = await client.put('0x4F724516242829DC5Bc6119f666b18102437De53', [
+    await connectToWallet()
+    console.log(address)
+    const [params] = await client.put(address, [
       {
         field: 'params',
         value: JSON.stringify(value),
@@ -18,12 +44,25 @@ const FormEditPage = () => {
     const json = params.text()
     const schema: Schema = JSON.parse(json)
     setSchema(schema)
+
+    navigate(`/${address}`)
   }
+
+  useEffect(() => {
+    connectToWallet()
+  }, [])
 
   return (
     <Flex alignItems='center' justifyContent='center' bg='black'>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={6}>
+          <Text
+            color='#79FB4C'
+            fontSize={24}
+            fontWeight='black'
+          >
+            {address.substr(0, 7)}...’s Page
+          </Text>
           <Text
             color='#E933ED'
             fontSize={20}
