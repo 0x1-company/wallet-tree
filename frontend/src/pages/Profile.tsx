@@ -1,18 +1,28 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { client } from '../privy'
 import Schema from '../entity/Schema'
-import { Flex, Stack, Text, Link } from '@chakra-ui/react'
+import { Flex, Stack, Text, Link, Button } from '@chakra-ui/react'
+import { WalletContext } from '../context/WalletContext'
 
 const ProfilePage = () => {
   const urlParams = useParams<{id: string}>()
-  const address = urlParams.id ?? ''
-
+  const walletaddress = urlParams.id ?? ''
   const [schema, setSchema] = useState<Schema>()
+  const { address, connectToWallet } = useContext(WalletContext)
+
+  const connectWallet = async () => {
+    await connectToWallet()
+  }
+
+  function clipboardWriteText() {
+    navigator.clipboard.writeText(`https://0xwallettree.xyz/${walletaddress}`)
+  }
 
   useEffect(() =>  {
+    connectToWallet()
     const fetchData = async () => {
-      const [params] = await client.get(address, [
+      const [params] = await client.get(walletaddress, [
         'params'
       ])
       const json = params?.text() ?? ''
@@ -23,7 +33,7 @@ const ProfilePage = () => {
     fetchData()
       .then()
       .catch(console.error)
-  }, [])
+  }, [address])
 
   return (
     <Flex alignItems='center' justifyContent='center' bg='black'>
@@ -32,6 +42,7 @@ const ProfilePage = () => {
             color='#79FB4C'
             fontSize={24}
             fontWeight='black'
+            fontFamily='Inconsolata'
           >
             {address.substr(0, 7)}...’s Page
           </Text>
@@ -40,6 +51,7 @@ const ProfilePage = () => {
             fontSize={20}
             fontWeight='bold'
             textAlign='center'
+            fontFamily='Inconsolata'
           >
             Check out MY SNS page!
           </Text>
@@ -50,6 +62,8 @@ const ProfilePage = () => {
             color='white'
             textAlign='center'
             hidden={schema?.twitter == ''}
+            isExternal
+            fontFamily='Inconsolata'
           >
             Twitter ↗︎ 
           </Link>
@@ -60,6 +74,8 @@ const ProfilePage = () => {
             color='white'
             textAlign='center'
             hidden={schema?.instagram == ''}
+            isExternal
+            fontFamily='Inconsolata'
           >
             Instagram ↗︎ 
           </Link>
@@ -70,6 +86,8 @@ const ProfilePage = () => {
             color='white'
             textAlign='center'
             hidden={schema?.linkedin == ''}
+            isExternal
+            fontFamily='Inconsolata'
           >
             Linkedin︎ ↗︎ 
           </Link>
@@ -80,6 +98,8 @@ const ProfilePage = () => {
             color='white'
             textAlign='center'
             hidden={schema?.github == ''}
+            isExternal
+            fontFamily='Inconsolata'
           >
             GitHub ↗︎
           </Link>
@@ -90,43 +110,27 @@ const ProfilePage = () => {
             color='white'
             textAlign='center'
             hidden={schema?.telegram == ''}
+            isExternal
+            fontFamily='Inconsolata'
           >
             Telegram  ↗︎
           </Link>
-          <Link
-            href={schema?.phoneNumber}
-            fontSize={32}
-            fontWeight='medium'
-            color='white'
-            textAlign='center'
-            hidden={schema?.phoneNumber == ''}
+          <Button color='white' bg='black' fontFamily='Inconsolata' fontSize={32} fontWeight='medium' onClick={clipboardWriteText}>Share This Page ↗︎</Button>
+          <Button
+            bg='#79FB4C'
+            color='black'
+            borderRadius='0'
+            onClick={connectWallet}
+            fontFamily='Inconsolata'
           >
-            Tell ↗︎ 
-          </Link>
-          <Link
-            href={schema?.email}
-            fontSize={32}
-            fontWeight='medium'
-            color='white'
-            textAlign='center'
-            hidden={schema?.email == ''}
-          >
-            Mail ↗︎ 
-          </Link>
-          <Link
-            href={schema?.discord}
-            fontSize={32}
-            fontWeight='medium'
-            color='white'
-            textAlign='center'
-            hidden={schema?.discord == ''}
-          >
-            Discord ↗︎
-          </Link>
+            <img src='/metamask.svg' />
+            Connect Wallet
+          </Button>
         </Stack>
     </Flex>
   )
 }
+
 
 
 export default ProfilePage

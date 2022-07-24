@@ -60,6 +60,7 @@ const FormEditPage = () => {
             color='#79FB4C'
             fontSize={24}
             fontWeight='black'
+            fontFamily='Inconsolata'
           >
             {address.substr(0, 7)}...’s Page
           </Text>
@@ -68,6 +69,7 @@ const FormEditPage = () => {
             fontSize={20}
             fontWeight='bold'
             textAlign='center'
+            fontFamily='Inconsolata'
           >
             Edit Mode...Type your id
           </Text>
@@ -82,6 +84,7 @@ const FormEditPage = () => {
               _placeholder={{ color: '#8B8B8B' }}
               fontSize={32}
               fontWeight='medium'
+              fontFamily='Inconsolata'
             />
           </FormControl>
           <FormControl>
@@ -95,6 +98,7 @@ const FormEditPage = () => {
               _placeholder={{ color: '#8B8B8B' }}
               fontSize={32}
               fontWeight='medium'
+              fontFamily='Inconsolata'
             />
           </FormControl>
           <FormControl>
@@ -108,6 +112,7 @@ const FormEditPage = () => {
               _placeholder={{ color: '#8B8B8B' }}
               fontSize={32}
               fontWeight='medium'
+              fontFamily='Inconsolata'
             />
           </FormControl>
           <FormControl>
@@ -121,6 +126,7 @@ const FormEditPage = () => {
               _placeholder={{ color: '#8B8B8B' }}
               fontSize={32}
               fontWeight='medium'
+              fontFamily='Inconsolata'
             />
           </FormControl>
           <FormControl>
@@ -134,45 +140,7 @@ const FormEditPage = () => {
               _placeholder={{ color: '#8B8B8B' }}
               fontSize={32}
               fontWeight='medium'
-            />
-          </FormControl>
-          <FormControl>
-            <Input
-              id='phoneNumber'
-              placeholder='PhoneNumber'
-              {...register('phoneNumber')}
-              border='none'
-              textAlign='center'
-              color='#EEFE53'
-              _placeholder={{ color: '#8B8B8B' }}
-              fontSize={32}
-              fontWeight='medium'
-            />
-          </FormControl>
-          <FormControl>
-            <Input
-              id='email'
-              placeholder='Email'
-              {...register('email')}
-              border='none'
-              textAlign='center'
-              color='#EEFE53'
-              _placeholder={{ color: '#8B8B8B' }}
-              fontSize={32}
-              fontWeight='medium'
-            />
-          </FormControl>
-          <FormControl>
-            <Input
-              id='discord'
-              placeholder='Discord'
-              {...register('discord')}
-              border='none'
-              textAlign='center'
-              color='#EEFE53'
-              _placeholder={{ color: '#8B8B8B' }}
-              fontSize={32}
-              fontWeight='medium'
+              fontFamily='Inconsolata'
             />
           </FormControl>
           <Button
@@ -181,6 +149,7 @@ const FormEditPage = () => {
             borderRadius='0'
             isLoading={isSubmitting}
             type='submit'
+            fontFamily='Inconsolata'
           >
             Save
           </Button>

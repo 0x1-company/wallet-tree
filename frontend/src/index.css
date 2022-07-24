@@ -1,3 +1,8 @@
 :root {
     background-color: black;
+    font-family: 'Inconsolata', monospace;
+}
+
+body {
+    font-family: 'Inconsolata', monospace;
 }

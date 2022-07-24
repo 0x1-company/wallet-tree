@@ -20,6 +20,7 @@ const TopPage = () => {
           color='black'
           borderRadius='0'
           onClick={connectWallet}
+          fontFamily='Inconsolata'
         >
           <img src='/metamask.svg' />
           Connect Wallet
