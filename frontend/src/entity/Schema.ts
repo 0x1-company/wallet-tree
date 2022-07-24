@@ -1,13 +1,12 @@
 type Schema = {
-  avatar: string
-  email: string
-  url: string
-  description: string
   twitter: string
+  instagram: string
+  linkedin: string
   github: string
   telegram: string
+  phoneNumber: string
+  email: string
   discord: string
-  linkedin: string
 }
 
 export default Schema

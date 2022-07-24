@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormLabel, Input, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { client } from '../privy'
@@ -21,83 +21,133 @@ const FormEditPage = () => {
   }
 
   return (
-    <Box p={4}>
+    <Flex alignItems='center' justifyContent='center' bg='black'>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl>
-          <FormLabel>avatar</FormLabel>
-          <Input
-            id='avatar'
-            placeholder='Not set'
-            {...register('avatar')}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor='email'>email</FormLabel>
-          <Input
-            id='email'
-            placeholder='Not set'
-            {...register('email')}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>url</FormLabel>
-          <Input
-            id='url'
-            placeholder='Not set'
-            {...register('url')}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>description</FormLabel>
-          <Input
-            id='description'
-            placeholder='Not set'
-            {...register('description')}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>com.twitter</FormLabel>
-          <Input
-            id='twitter'
-            placeholder='Not set'
-            {...register('twitter')}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>com.github</FormLabel>
-          <Input
-            id='github'
-            placeholder='Not set'
-            {...register('github')}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>org.telegram</FormLabel>
-          <Input
-            id='telegram'
-            placeholder='Not set'
-            {...register('telegram')}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>com.discord</FormLabel>
-          <Input
-            id='discord'
-            placeholder='Not set'
-            {...register('discord')}
-          />
-        </FormControl>
-        <FormControl>
-          <FormLabel>com.linkedin</FormLabel>
-          <Input
-            id='linkedin'
-            placeholder='Not set'
-            {...register('linkedin')}
-          />
-        </FormControl>
-        <Button mt={4} colorScheme='teal' isLoading={isSubmitting} type='submit'>Save</Button>
+        <Stack spacing={6}>
+          <Text
+            color='#E933ED'
+            fontSize={20}
+            fontWeight='bold'
+            textAlign='center'
+          >
+            Edit Mode...Type your id
+          </Text>
+          <FormControl>
+            <Input
+              id='twitter'
+              placeholder='Twitter'
+              {...register('twitter')}
+              border='none'
+              textAlign='center'
+              color='#EEFE53'
+              _placeholder={{ color: '#8B8B8B' }}
+              fontSize={32}
+              fontWeight='medium'
+            />
+          </FormControl>
+          <FormControl>
+            <Input
+              id='instagram'
+              placeholder='Instagram'
+              {...register('instagram')}
+              border='none'
+              textAlign='center'
+              color='#EEFE53'
+              _placeholder={{ color: '#8B8B8B' }}
+              fontSize={32}
+              fontWeight='medium'
+            />
+          </FormControl>
+          <FormControl>
+            <Input
+              id='linkedin'
+              placeholder='Linkedin'
+              {...register('linkedin')}
+              border='none'
+              textAlign='center'
+              color='#EEFE53'
+              _placeholder={{ color: '#8B8B8B' }}
+              fontSize={32}
+              fontWeight='medium'
+            />
+          </FormControl>
+          <FormControl>
+            <Input
+              id='github'
+              placeholder='GitHub'
+              {...register('github')}
+              border='none'
+              textAlign='center'
+              color='#EEFE53'
+              _placeholder={{ color: '#8B8B8B' }}
+              fontSize={32}
+              fontWeight='medium'
+            />
+          </FormControl>
+          <FormControl>
+            <Input
+              id='telegram'
+              placeholder='Telegram'
+              {...register('telegram')}
+              border='none'
+              textAlign='center'
+              color='#EEFE53'
+              _placeholder={{ color: '#8B8B8B' }}
+              fontSize={32}
+              fontWeight='medium'
+            />
+          </FormControl>
+          <FormControl>
+            <Input
+              id='phoneNumber'
+              placeholder='PhoneNumber'
+              {...register('phoneNumber')}
+              border='none'
+              textAlign='center'
+              color='#EEFE53'
+              _placeholder={{ color: '#8B8B8B' }}
+              fontSize={32}
+              fontWeight='medium'
+            />
+          </FormControl>
+          <FormControl>
+            <Input
+              id='email'
+              placeholder='Email'
+              {...register('email')}
+              border='none'
+              textAlign='center'
+              color='#EEFE53'
+              _placeholder={{ color: '#8B8B8B' }}
+              fontSize={32}
+              fontWeight='medium'
+            />
+          </FormControl>
+          <FormControl>
+            <Input
+              id='discord'
+              placeholder='Discord'
+              {...register('discord')}
+              border='none'
+              textAlign='center'
+              color='#EEFE53'
+              _placeholder={{ color: '#8B8B8B' }}
+              fontSize={32}
+              fontWeight='medium'
+            />
+          </FormControl>
+          <Button
+            color='black'
+            bg='#79FB4C'
+            borderRadius='0'
+            isLoading={isSubmitting}
+            type='submit'
+          >
+            Save
+          </Button>
+        </Stack>
       </form>
-    </Box>
+    </Flex>
   )
 }
 

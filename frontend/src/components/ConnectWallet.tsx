@@ -25,7 +25,15 @@ const ConnectWallet = () => {
   }
 
   return (
-    <Button colorScheme='teal' onClick={connectToWallet}>Connect Wallet</Button>
+    <Button
+      bg='#79FB4C'
+      color='black'
+      borderRadius='0'
+      onClick={connectToWallet}
+    >
+      <img src='/metamask.svg' />
+      Connect Wallet
+    </Button>
   )
 }
 
