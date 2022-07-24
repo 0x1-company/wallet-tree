@@ -49,6 +49,7 @@ const ProfilePage = () => {
             fontWeight='medium'
             color='white'
             textAlign='center'
+            hidden={schema?.twitter == ''}
           >
             Twitter ↗︎ 
           </Link>
@@ -58,6 +59,7 @@ const ProfilePage = () => {
             fontWeight='medium'
             color='white'
             textAlign='center'
+            hidden={schema?.instagram == ''}
           >
             Instagram ↗︎ 
           </Link>
@@ -67,6 +69,7 @@ const ProfilePage = () => {
             fontWeight='medium'
             color='white'
             textAlign='center'
+            hidden={schema?.linkedin == ''}
           >
             Linkedin︎ ↗︎ 
           </Link>
@@ -76,15 +79,17 @@ const ProfilePage = () => {
             fontWeight='medium'
             color='white'
             textAlign='center'
+            hidden={schema?.github == ''}
           >
             GitHub ↗︎
           </Link>
           <Link
-            href=''
+            href={`https://t.me/${schema?.telegram}`}
             fontSize={32}
             fontWeight='medium'
             color='white'
             textAlign='center'
+            hidden={schema?.telegram == ''}
           >
             Telegram  ↗︎
           </Link>
@@ -94,6 +99,7 @@ const ProfilePage = () => {
             fontWeight='medium'
             color='white'
             textAlign='center'
+            hidden={schema?.phoneNumber == ''}
           >
             Tell ↗︎ 
           </Link>
@@ -103,6 +109,7 @@ const ProfilePage = () => {
             fontWeight='medium'
             color='white'
             textAlign='center'
+            hidden={schema?.email == ''}
           >
             Mail ↗︎ 
           </Link>
@@ -112,6 +119,7 @@ const ProfilePage = () => {
             fontWeight='medium'
             color='white'
             textAlign='center'
+            hidden={schema?.discord == ''}
           >
             Discord ↗︎
           </Link>
